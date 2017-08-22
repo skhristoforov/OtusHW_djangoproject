@@ -1,0 +1,25 @@
+<div class="portlet-title">
+    <div class="actions">
+        <ul class="pagination">
+            {% if questions.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            {% else %}
+                <li class="disabled"><a href="" tabindex="-1" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+            {% endif %}
+
+            {% for page in questions.paginator.page_range %}
+                {% if page == questions.number %}
+                    <li class="active"><a href="?page={{ page }}{{ getvars }}">{{ page }}</a></li>
+                {% else %}
+                    <li><a href="?page={{ page }}{{ getvars }}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
+
+            {% if questions.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}{{ getvars }}" aria-label="Previous"><span aria-hidden="true">»</span></a></li>
+            {% else %}
+                <li class="disabled"><a href="" tabindex="-1" aria-label="Previous"><span aria-hidden="true">»</span></a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>

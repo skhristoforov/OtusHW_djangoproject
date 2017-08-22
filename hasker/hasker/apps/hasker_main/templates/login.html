@@ -1,0 +1,45 @@
+{% extends "bootstrap_template.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block bootstrap3_content %}
+<!-- Navigation bar -->
+{% include "header.html" %}
+
+<!--Left-->
+<div class="col-md-1 hidden-xs hidden-sm">
+    <!--left side-->
+</div>
+
+<!-- Registration Form -->
+<div class="col-sm-12 col-md-10 text-center">
+    <div class="col-xs-2 col-md-3"></div>
+    <div class="col-xs-8 col-md-6">
+        <br><br><br><br>
+        <h1>Log In</h1>
+        <hr>
+        <br><br>
+
+        <div class="hidden-xs col-sm-2 col-md-3"></div>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <div class="col-xs-12 col-sm-8 col-md-6">
+            <input type="text" name="username" class="form-control" placeholder="Username"><br>
+            <input type="password" name="password" class="form-control" placeholder="Password"><br>
+            <br>
+            <div class="btn-group btn-group-lg">
+                <input type="submit" class="btn btn-md btn-success">
+            </div>
+        </div>
+        </form>
+        <div class="hidden-xs col-sm-2 col-md-3"></div>
+    </div>
+    <div class="col-xs-2 col-md-3"></div>
+</div>
+
+<!--Right-->
+<div class="col-md-1 hidden-xs hidden-sm">
+    <!--right side-->
+</div>
+{% endblock %}
+
+{% block add_script %}{% endblock %}

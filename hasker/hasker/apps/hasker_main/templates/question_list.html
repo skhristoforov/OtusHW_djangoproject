@@ -1,0 +1,45 @@
+{%block question_list%}
+    {% load humanize %}
+    {% for q in questions %}
+    <div id="postlist">
+        <div class="panel">
+            <div class="panel-heading">
+                <div class="text-center">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h3 class="pull-left">
+                                <a href="/questions/{{q.id}}">{{ q.title }}</a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <h4 class="pull-right">
+                                <small><em>{{ q.votes }}<br>votes</em></small>
+                            </h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <h4 class="pull-right">
+                                <small><em>-1<br>answers</em></small>
+                            </h4>
+                        </div>
+                        <div class="col-xs-6">
+                            <h4 class="pull-right">
+                                <small><em>Ivan Ivanov<br>{{ q.date|naturaltime|capfirst }}</em></small>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                {% for tag in q.tags.all %}
+                    <form action="/search" method="get" style="display: inline;">
+                        <button class="btn btn-default btn-xs tag-button">{{ tag }}</button>
+                        <input type="hidden" name="phrase" value={{ tag }}>
+                    </form>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% endblock %}

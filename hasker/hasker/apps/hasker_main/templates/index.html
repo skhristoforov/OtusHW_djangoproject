@@ -1,0 +1,62 @@
+{% extends "bootstrap_template.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block bootstrap3_content %}
+
+<!-- Navigation bar -->
+{% include "header.html" %}
+
+<!--Left-->
+<div class="col-md-1 hidden-xs hidden-sm">
+    <!--left side-->
+</div>
+
+<!--Questions-->
+<div class="col-sm-8 col-md-7">
+    <div class="col-md-1 margin-bottom-30"></div>
+
+    <div class="col-md-10 margin-bottom-30">
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet">
+            <!--Questions Header-->
+            <div class="portlet-title">
+                <div class="actions">
+                    <div class="btn-group" data-toggle="buttons">
+                            <label class="btn grey-salsa  {% if sorting == 'last' %}active{% endif %}" id="last">
+                                <input type="radio" name="options" class="toggle">
+                                New Questions
+                            </label>
+                            <label class="btn grey-salsa {% if sorting == 'hot' %}active{% endif %}"  id="hot">
+                                <input type="radio" name="options" class="toggle">
+                                Hot Questions
+                            </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="portlet-body" id="questions">
+                {% include "question_list.html" %}
+            </div>
+
+            {% include "paginator.html" %}
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+
+    <div class="col-md-1 margin-bottom-30"></div>
+</div>
+
+<!--Trending-->
+<div class="col-sm-4 col-md-3 hidden-xs">
+    {% include "trending.html" %}
+</div>
+
+<!--Right-->
+<div class="col-md-1 hidden-xs hidden-sm">
+    <!--right side-->
+</div>
+{% endblock %}
+
+{% block add_script %}
+    <script src="{% static 'hasker_main/hot_last_view.js' %}"></script>
+{% endblock %}

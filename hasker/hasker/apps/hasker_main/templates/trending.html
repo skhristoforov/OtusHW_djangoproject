@@ -1,0 +1,31 @@
+{% block trending %}
+<div class="trending">
+    <div class="text-center">
+        <form action="/asking" method="get">
+            <button type="submit" class="btn btn-ask btn-lg ">
+                <i class="fa fa-reply" style="margin-right: 10px;"></i>
+                Ask now!
+            </button>
+        </form>
+        <br />
+        <br />
+        <h1 class="tag-title">Trending</h1>
+    </div>
+    <hr>
+    <br />
+    {% for t in trending %}
+        <span>
+            <form action='/questions/{{t.id}}' method="get">
+                <button type="submit" class="btn btn-votes pull-left" style="margin-right: 10px;">
+                    {{t.votes}}
+                </button>
+            </form>
+            <a href='/questions/{{t.id}}'>
+                <h4>{{t.title}}</h4>
+            </a>
+            <br>
+        </span>
+    {% endfor %}
+    <hr>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "bootstrap_template.html" %}
+{% load bootstrap3 %}
+{% block bootstrap3_content %}
+
+<!-- Navigation bar -->
+{% include "header.html" %}
+
+<!--Left-->
+<div class="col-md-1 hidden-xs hidden-sm">
+    <!--left side-->
+</div>
+
+<!--Questions-->
+<div class="col-sm-8 col-md-7">
+    <div class="col-md-1 margin-bottom-30"></div>
+
+    <div class="col-md-10 margin-bottom-30">
+        <!-- BEGIN Portlet PORTLET-->
+        <div class="portlet">
+            <!--POSTS-->
+            <div class="portlet-body" id="questions"></div>
+                {% include "question_list.html" %}
+
+            {% include "paginator.html" %}
+        </div>
+        <!-- END Portlet PORTLET-->
+    </div>
+
+    <div class="col-md-1 margin-bottom-30"></div>
+</div>
+
+<!--Trending-->
+<div class="col-sm-4 col-md-3 hidden-xs">
+    {% include "trending.html" %}
+</div>
+
+<!--Right-->
+<div class="col-md-1 hidden-xs hidden-sm">
+    <!--right side-->
+</div>
+{% endblock %}
