@@ -18,4 +18,9 @@ class LoginForm(forms.Form):
 
 
 class AskingForm(forms.Form):
-    answer = forms.TextInput()
+    title = forms.CharField(required=True, max_length=128)
+    text = forms.TextInput()
+
+    from hasker.apps.hasker_main.models import HaskerTag
+    for tag in HaskerTag.objects.all():
+        locals()[tag.tag] = forms.BooleanField(initial=False)

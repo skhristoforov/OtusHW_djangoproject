@@ -145,8 +145,34 @@ def register(request):
 @csrf_protect
 @require_http_methods(['GET', 'POST'])
 def asking(request):
+    if request.POST:
+        question_form = forms.AskingForm(request.POST)
+        logging.warning(question_form.is_valid())
+        if question_form.is_valid():
+            title = request.POST.get('title')
+            text = request.POST.get('text')
+            tags = []
 
-    return render(request, 'asking.html', {})
+            logging.warning(title)
+            logging.warning(text)
+            logging.warning(title and text)
+            if title and text:  # run by tags
+                tags_all = HaskerTag.objects.all()
+                for tag in tags_all:
+                    if tag.tag in request.POST.keys():
+                        tags.append(tag)
+
+                logging.warning(tags)
+            else:
+                pass
+                # TODO error handler
+        return HttpResponseRedirect('/')
+    else:
+        available_tags = HaskerTag.objects.all()
+        context = {
+            'tags': available_tags,
+        }
+        return render(request, 'asking.html', context)
 
 
 

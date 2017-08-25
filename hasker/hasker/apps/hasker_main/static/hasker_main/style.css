@@ -51,6 +51,18 @@
     font-family: 'Consolas';
 }
 
+/* Question */
+.panel-footer .tag-button,
+.panel-footer .tag-button:focus,
+.panel-footer .tag-button:active {
+    background: #00cc66 !important;
+    color: #fafcfb !important;
+    border-color:transparent !important;
+    font-weight: bold;
+    font-family: 'Consolas';
+}
+
+
 /* Button Ask */
 .btn-ask {
 	color: #fafcfb;

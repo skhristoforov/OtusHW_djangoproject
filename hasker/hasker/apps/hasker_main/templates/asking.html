@@ -13,7 +13,41 @@
 
 <!--Questions-->
 <div class="col-sm-12 col-md-10">
-    123
+    <form action="/asking" method="post">
+        {% csrf_token %}
+    <div class="col-xs-2"></div>
+
+    <div class="col-xs-8">
+        <br>
+        <div class="form-group">
+            <label for="txt"><h3>New question:</h3></label>
+            <br>
+            <br>
+            <input name="title" type="text" class="form-control" id="txt" placeholder="Title">
+            <br>
+            <textarea name="text" class="form-control" rows="10" id="comment" placeholder="Type your question here"></textarea>
+        </div>
+        <br>
+        <div class="text-center">
+            <div class="btn-group btn-group-lg pull-right">
+                <input type="submit" class="btn btn-md btn-success">
+            </div>
+        </div>
+    </div>
+
+   <div class="col-xs-2 text-center">
+        <br><br><br><br>
+        <label for="alltags">Add tags:</label>
+        <div id="alltags">
+            {% for t in tags %}
+                <span class="button-checkbox">
+                    <button style="margin: 3px;" type="button" class="btn btn-xs" data-color="primary">{{ t }}</button>
+                    <input name={{ t.tag }} type="checkbox" class="hidden" checked="">
+                </span>
+            {% endfor %}
+        </div>
+    </div>
+    </form>
 </div>
 
 <!--Right-->
@@ -22,4 +56,6 @@
 </div>
 {% endblock %}
 
-{% block add_script %}{% endblock %}
+{% block add_script %}
+        <script src="{% static 'hasker_main/check_uncheck.js' %}"></script>
+{% endblock %}
